@@ -1,5 +1,3 @@
-require 'pry'
-
 RSpec.describe "Person" do
 
   let(:stella) { Person.new("Stella") }
@@ -255,7 +253,6 @@ RSpec.describe "Person" do
       it "returns a string that reflects the caller's side of the conversation" do
         {felix => penelope, penelope => felix}.each do |caller, callee|
           convo = "Hi #{callee.name}! It's #{caller.name}. How are you?"
-          # binding.pry
           expect(caller.call_friend(callee)).to eq(convo)
         end
       end

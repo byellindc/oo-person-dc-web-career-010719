@@ -10,7 +10,7 @@ class Person
   end
 
   def happiness=(happiness)
-    @happiness = happiness
+    @happiness = happiness #.clamp(0, 10)   
     if @happiness > 10 
       @happiness = 10
     elsif @happiness < 0
@@ -20,7 +20,7 @@ class Person
   end
 
   def hygiene=(hygiene)
-    @hygiene = hygiene
+    @hygiene = hygiene #.clamp(0, 10)
     if @hygiene > 10 
       @hygiene = 10
     elsif @hygiene < 0
@@ -60,18 +60,18 @@ class Person
   end
 
   def start_conversation(friend, topic)
-    if topic == "politics"
+    case topic
+    when "politics"
       convo = "blah blah partisan blah lobbyist"
       self.happiness = self.happiness - 2
       friend.happiness = friend.happiness - 2
-    elsif topic == "weather"
+    when "weather"
       convo = "blah blah sun blah rain"
       self.happiness = self.happiness + 1
       friend.happiness = friend.happiness + 1
-    else 
+    else
       convo = "blah blah blah blah blah"
     end
-
     return convo
   end
 end
